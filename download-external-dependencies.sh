@@ -108,7 +108,7 @@ wined3dDownload() {
 	else
 		echo "Downloading WineD3D-$1..."
 
-		cd "WineD3D"	
+		cd "WineD3D"
 
 		curl -# -L -O "https://downloads.fdossena.com/Projects/WineD3D/Builds/WineD3DForWindows_$1.zip"
 		curl -# -L -O "https://downloads.fdossena.com/Projects/WineD3D/Builds/WineD3DForWindows_$1-x86_64.zip"
@@ -222,5 +222,7 @@ done
 vkd3dDownload "2.13"
 
 customDxvkDownload "DXVK-1.10-Stripped-Requiriments" "https://github.com/KreitinnSoftware/dxvk/releases/download/dxvk-1.10-stripped-requiriments/dxvk-1.10-b3e85be0fcef978604656a19ecafdde85a28326a.tar.gz" "dxvk-1.10-b3e85be0fcef978604656a19ecafdde85a28326a"
+
+customDxvkDownload "DXVK-1.10-Trass3r" "https://github.com/nitanmarcel/MiceWine-RootFS-Generator/releases/download/dxvktrass3k/dxvk-1.10-trass3r.tar.gz" "dxvk-1.10-trass3r"
 
 cp -rf "$INIT_DIR/etc/"* .
