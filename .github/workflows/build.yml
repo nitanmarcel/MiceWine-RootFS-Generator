@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: "Clone Repository"
         run: |
-          git clone https://github.com/KreitinnSoftware/MiceWine-RootFS-Generator
+          git clone https://github.com/nitanmarcel/MiceWine-RootFS-Generator
 
       - name: "Environment Preparation"
         run: |
