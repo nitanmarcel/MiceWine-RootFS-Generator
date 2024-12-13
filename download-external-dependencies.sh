@@ -102,6 +102,32 @@ dxvkGplAsyncDownload() {
 	fi
 }
 
+dxvkWinlatorMaliDownload() {
+	if [ -e "DXVK/DXVK-$1-WinlatorMali" ]; then
+		echo "DXVK-$1-WinlatorMali already downloaded."
+	else
+		echo "Downloading DXVK-$1-WinlatorMali..."
+
+		cd "DXVK"
+
+		curl -# -L -O "https://github.com/Fcharan/WinlatorMali/releases/download/$1/dxvkpatched.tar"
+
+		if [ $? != 0 ]; then
+			echo "Error on Downloading DXVK-$1-WinlatorMali."
+		else
+			mkdir -p "DXVK-$1-WinlatorMali"
+
+			tar -xf "dxvkpatched.tar" -C ""
+
+			mv DXVK-$1-WinlatorMali/system32 DXVK-$1-WinlatorMalii/x32
+
+			mv DXVK-$1-WinlatorMali/syswow64 DXVK-$1-WinlatorMali/x64
+		fi
+
+		cd "$OLDPWD"
+	fi
+}
+
 wined3dDownload() {
 	if [ -e "WineD3D/WineD3D-($1)" ]; then
 		echo "WineD3D-$1 already downloaded."
@@ -224,5 +250,7 @@ vkd3dDownload "2.13"
 customDxvkDownload "DXVK-1.10-Stripped-Requiriments" "https://github.com/KreitinnSoftware/dxvk/releases/download/dxvk-1.10-stripped-requiriments/dxvk-1.10-b3e85be0fcef978604656a19ecafdde85a28326a.tar.gz" "dxvk-1.10-b3e85be0fcef978604656a19ecafdde85a28326a"
 
 customDxvkDownload "DXVK-1.10-Trass3r" "https://github.com/nitanmarcel/MiceWine-RootFS-Generator/releases/download/dxvktrass3k/dxvk-1.10-trass3r.tar.gz" "dxvk-1.10-trass3r"
+
+dxvkWinlatorMaliDownload "0.0"
 
 cp -rf "$INIT_DIR/etc/"* .
